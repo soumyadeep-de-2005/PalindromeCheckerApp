@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class UseCase6PalindromeCheckerApp {
+
+    public static void main(String[] args) {
+
+        // Define input
+        String input = "civic";
+
+        // Create Queue (FIFO)
+        Queue<Character> queue = new LinkedList<>();
+
+        // Create Stack (LIFO)
+        Stack<Character> stack = new Stack<>();
+
+        // Insert characters into both structures
+        for (char c : input.toCharArray()) {
+            queue.add(c);   // enqueue
+            stack.push(c);  // push
+        }
+
+        // Flag to check palindrome
+        boolean isPalindrome = true;
+
+        // Compare dequeue (queue) with pop (stack)
+        while (!queue.isEmpty()) {
+            if (queue.remove() != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        // Output result
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
+    }
+}
